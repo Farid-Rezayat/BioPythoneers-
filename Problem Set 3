@@ -1,0 +1,53 @@
+import re
+class Questions_Set():
+     def __init__(self,prompt,answer,length=1):
+        self.prompt=prompt
+        self.answer=answer
+        self.length=length
+
+
+
+question_prompts_3=[
+    "\nWe want to store a set of DNA sequences for a study. Which data structure is the best for this purpose?\n(A) string\n(B) bool\n(C) list\n(D) dict\nYour Answer: ",
+    
+    "\nWhat is the output of the following code: 1) RNA = “UCGUAC” 2) DNA = RNA.replace(“U”,”T”) 3) print (DNA)\n(A) TCGTAC\n(B) AGCATG\n(C) AUGAUC\n(D) UCGUAC\nYour Answer: ",
+    
+    "\nAs a part of a research study, you have been given a protein sequence to analyze. Which function would you use to find the number of specific amino acids present in the sequence?\n(A) find()\n(B) sort()\n(C) index()\n(D) count()\nYour Answer: ",
+    
+    "\nWhich of the following options would you use to select sequences that are shorter than a specified length? \n(A) a for loop\n(B) a while loop\n(C) a list comprehension\n(D) a dictionary comprehension\nYour Answer: ",
+    
+    "\nWhich of the following Python libraries would you use to cluster gene expression data?\n(A) matplotlib\n(B) seaborn\n(C) biopython\n(D) scikit-learn\nYour Answer: ",
+    
+    "\nYou are given a DNA sequence to analyze. Which function would you use to locate the first occurrence of a certain subsequence?\n(A) index()\n(B) find()\n(C) count()\n(D) append()\nYour Answer: ",    ]
+
+    
+    multiple_choice_questions=[
+    Questions_Set(question_prompts_1[0],'A'),
+    Questions_Set(question_prompts_1[1],'A'),
+    Questions_Set(question_prompts_1[2],'D'),
+    Questions_Set(question_prompts_1[3],'C'),
+    Questions_Set(question_prompts_1[4],'D'),
+    Questions_Set(question_prompts_1[5],'B')]
+    
+    def game_set_3(multiple_choice_questions):
+    correct_counter=0
+    
+    for question in multiple_choice_questions:
+        answer=input(question.prompt)
+        
+        while not re.match("^[a-d]*$",answer.lower()):
+            print("It looks like you've chosen an invalid response. Please try again here\n")
+            answer=input(question.prompt)
+        while question.length != len(answer):
+            print("Your response isn't the correct length! Please try again here\n")
+            answer=input(question.prompt)
+        if answer.upper()==question.answer:
+            correct_counter+=1
+    quiz_percentage=round((correct_counter/len(multiple_choice_questions))*100,1)
+
+
+
+def play_game():
+    game_set_3(multiple_choice_questions)
+    return "Complete"
+ 
